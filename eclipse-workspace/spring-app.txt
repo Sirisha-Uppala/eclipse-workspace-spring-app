@@ -1,0 +1,742 @@
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get all
+Unable to connect to the server: dial tcp 127.0.0.1:57362: connectex: No connection could be made because the target machine actively refused it.
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get all
+Unable to connect to the server: dial tcp 127.0.0.1:57362: connectex: No connection could be made because the target machine actively refused it.
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ minikube start
+* minikube v1.20.0 on Microsoft Windows 10 Enterprise 10.0.19042 Build 19042
+* Using the docker driver based on existing profile
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* Updating the running docker "minikube" container ...
+* Preparing Kubernetes v1.20.2 on Docker 20.10.6 ...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+  - Using image kubernetesui/metrics-scraper:v1.0.4
+  - Using image kubernetesui/dashboard:v2.1.0
+* Enabled addons: storage-provisioner, default-storageclass, dashboard
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   10d
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get cm
+NAME               DATA   AGE
+kube-root-ca.crt   1      10d
+postgres-cm        1      10h
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-k879f   kubernetes.io/service-account-token   3      10d
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get pv
+No resources found
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ kubectl get pvc
+No resources found in default namespace.
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ cd D:/git-
+git-bash.exe  git-cmd.exe
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 ~ (master)
+$ cd D:/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d
+$ ls
+'$RECYCLE.BIN'/   Installations/  'System Volume Information'/   eclipse-workspace/   git/   ibm-eclipse-workspace/   java/  'k8s-Deprecated APIs-for-apiVersion.docx'
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d
+$ cd git/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ ls
+README.md  postgres/  spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Already up to date.
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cd spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ ls
+Dockerfile  entrypoint.sh  fromvm/  spring-app-cm.yml  spring-app-deployment.yml  spring-app-secret.yml  spring-app-service.yml  template-spring-app.yml  test1/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ docker build --no-cache -t spring-app .
+#1 [internal] load build definition from Dockerfile
+#1 sha256:3b2f5e64c3942f991c4dc84f8c434c78a4c79c508f0f9c29ad1a1367534ac6a6
+#1 transferring dockerfile: 32B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 sha256:f774c2fe63edeeae9f8f475d61a3651964cd3bd981b01a43971aa1a2125f62f6
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/maven:latest
+#3 sha256:f979d5a172ff7b467c804d9029163f1960df72570a2cad1ecc34d26c961c690f
+#3 ...
+
+#4 [auth] library/maven:pull token for registry-1.docker.io
+#4 sha256:64d1373d5950fc461a63e1a71f54dd33e481f12d2cdba782400b4ad830540131
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/maven:latest
+#3 sha256:f979d5a172ff7b467c804d9029163f1960df72570a2cad1ecc34d26c961c690f
+#3 DONE 2.7s
+
+#5 [stage-1 1/4] FROM docker.io/library/maven@sha256:054143866bf2bdcb6104c410ef2fb5e47f3425924492d76aa20121b044eb469e
+#5 sha256:b41c53c7d73f9e2896729c986917f957fc24c2110e626a9e46e192e794e49ecb
+#5 CACHED
+
+#7 [internal] load build context
+#7 sha256:b45868c27947a550ed9e1956a11288e5fe08cb722470bf10707d68522ae0b786
+#7 transferring context: 4.90kB 0.0s done
+#7 DONE 0.0s
+
+#6 [stage-1 2/4] RUN mkdir -p /work/jar /work/java/test1  && microdnf install yum  && yum install iputils procps vi -y
+#6 sha256:60aeeb5a821ad7bb019a7f929a4ebfdb086722bd855215fdbb1eb9a2b6e57f97
+#6 3.243 Package                                         Repository            Size
+#6 3.243 Installing:
+
+#8 [stage-1 3/4] COPY ./entrypoint.sh /work/java/scripts/
+#8 sha256:ac035c21e0fb8ac8aa55c35b32e921537423ca469d766cd488ad3986d28cb8fc
+#8 DONE 0.1s
+
+#9 [stage-1 4/4] ADD test1 /work/java/test1
+#9 sha256:9cd32d369b24f50bb1c8b122dbb930824157ff8148fb8693e8a817648f31e39c
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#10 exporting layers
+#10 exporting layers 1.3s done
+#10 writing image sha256:ccaff63b24e048e05f917a4726b33cc0881854f4744f7e32d06a9057633db326
+#10 writing image sha256:ccaff63b24e048e05f917a4726b33cc0881854f4744f7e32d06a9057633db326 done
+#10 naming to docker.io/library/spring-app done
+#10 DONE 1.4s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ docker tag spring-app:latest siri9911/spring-postgres-rest-app:latest
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ docker push siri9911/spring-postgres-rest-app:latest
+The push refers to repository [docker.io/siri9911/spring-postgres-rest-app]
+db39d84833ae: Preparing
+76954e7c56ef: Preparing
+5be6c72b4297: Preparing
+11addcdf2c41: Preparing
+f383a8a658e5: Preparing
+1439b5e956eb: Preparing
+db6d1c6d8d1a: Preparing
+a8a84740beab: Preparing
+046fa1e6609c: Preparing
+1a3adb4bd0a7: Preparing
+db6d1c6d8d1a: Waiting
+a8a84740beab: Waiting
+046fa1e6609c: Waiting
+1a3adb4bd0a7: Waiting
+1439b5e956eb: Waiting
+f383a8a658e5: Layer already exists
+11addcdf2c41: Layer already exists
+1439b5e956eb: Layer already exists
+db6d1c6d8d1a: Layer already exists
+046fa1e6609c: Layer already exists
+a8a84740beab: Layer already exists
+1a3adb4bd0a7: Layer already exists
+76954e7c56ef: Pushed
+db39d84833ae: Pushed
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ docker push siri9911/spring-postgres-rest-app:latest
+The push refers to repository [docker.io/siri9911/spring-postgres-rest-app]
+db39d84833ae: Preparing
+76954e7c56ef: Preparing
+5be6c72b4297: Preparing
+11addcdf2c41: Preparing
+f383a8a658e5: Preparing
+1439b5e956eb: Preparing
+db6d1c6d8d1a: Preparing
+1439b5e956eb: Waiting
+db6d1c6d8d1a: Waiting
+a8a84740beab: Preparing
+046fa1e6609c: Preparing
+1a3adb4bd0a7: Preparing
+a8a84740beab: Waiting
+046fa1e6609c: Waiting
+1a3adb4bd0a7: Waiting
+11addcdf2c41: Layer already exists
+f383a8a658e5: Layer already exists
+76954e7c56ef: Layer already exists
+db39d84833ae: Layer already exists
+db6d1c6d8d1a: Layer already exists
+046fa1e6609c: Layer already exists
+a8a84740beab: Layer already exists
+1439b5e956eb: Layer already exists
+1a3adb4bd0a7: Layer already exists
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl get cm
+NAME               DATA   AGE
+kube-root-ca.crt   1      10d
+postgres-cm        1      10h
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl get secret
+NAME                  TYPE                                  DATA   AGE
+default-token-k879f   kubernetes.io/service-account-token   3      10d
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ cd ..
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ ls
+README.md  postgres/  spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cd postgres/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ ls
+cm.yml  deployment.yml  pv.yml  pvc.yml  secret.yml  service.yml
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ cat secret.yml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: default
+  labels:
+    name: postgres
+data:
+  postgres-user: ZGJ1c2Vy
+  postgres-passwd: ZGJwYXNz
+  postgres-db: cG9zdGdyZXM=
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./secret.yml
+secret/postgres-secret created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./pv.yml
+persistentvolume/postgres-vol created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./pvc.yml
+persistentvolumeclaim/postgres-vol-pvc created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./deployment.yml
+deployment.apps/postgres created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./service.yml
+service/postgres-service created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl get all
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn   1/1     Running   0          14s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          10d
+service/postgres-service   NodePort    10.111.60.66   <none>        5432:31312/TCP   4s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   1/1     1            1           14s
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6   1         1         1       14s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl get all
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn   1/1     Running   0          71s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          10d
+service/postgres-service   NodePort    10.111.60.66   <none>        5432:31312/TCP   61s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   1/1     1            1           71s
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6   1         1         1       71s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ cd ../spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ ls
+Dockerfile  entrypoint.sh  fromvm/  spring-app-cm.yml  spring-app-deployment.yml  spring-app-secret.yml  spring-app-service.yml  template-spring-app.yml  test1/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ cd ..
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 8 (delta 5), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (8/8), 1.50 KiB | 20.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 5915381..89558c0
+Fast-forward
+ postgres/service.yml              | 6 +++---
+ spring-app/spring-app-service.yml | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cd postgres/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl create -f ./service.yml
+service/postgres-service created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ kubectl get all
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn   1/1     Running   0          6m49s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    10d
+service/postgres-service   ClusterIP   10.107.53.14   <none>        5432/TCP   5s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   1/1     1            1           6m49s
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6   1         1         1       6m49s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/postgres (master)
+$ cd ../spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ ls
+Dockerfile  entrypoint.sh  fromvm/  spring-app-cm.yml  spring-app-deployment.yml  spring-app-secret.yml  spring-app-service.yml  template-spring-app.yml  test1/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ cd ..
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), 576 bytes | 64.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 89558c0..60aa47b
+Fast-forward
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cd spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl create -f ./spring-app-cm.yml
+configmap/spring-app-cm created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl create -f ./spring-app-secret.yml
+secret/spring-app-secret created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl create -f ./spring-app-deployment.yml
+deployment.apps/spring-engineer-app created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl create -f ./spring-app-service.yml
+service/spring-engineer-service created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl get all
+NAME                                       READY   STATUS              RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn              1/1     Running             0          9m19s
+pod/spring-engineer-app-6f96d5f756-zdkfn   0/1     ContainerCreating   0          10s
+
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP    10d
+service/postgres-service          ClusterIP   10.107.53.14    <none>        5432/TCP   2m35s
+service/spring-engineer-service   ClusterIP   10.99.188.136   <none>        8077/TCP   4s
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres              1/1     1            1           9m19s
+deployment.apps/spring-engineer-app   0/1     1            0           10s
+
+NAME                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6              1         1         1       9m19s
+replicaset.apps/spring-engineer-app-6f96d5f756   1         1         0       10s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl get all
+NAME                                       READY   STATUS              RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn              1/1     Running             0          9m27s
+pod/spring-engineer-app-6f96d5f756-zdkfn   0/1     ContainerCreating   0          18s
+
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP    10d
+service/postgres-service          ClusterIP   10.107.53.14    <none>        5432/TCP   2m43s
+service/spring-engineer-service   ClusterIP   10.99.188.136   <none>        8077/TCP   12s
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres              1/1     1            1           9m27s
+deployment.apps/spring-engineer-app   0/1     1            0           18s
+
+NAME                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6              1         1         1       9m27s
+replicaset.apps/spring-engineer-app-6f96d5f756   1         1         0       18s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl get all
+NAME                                       READY   STATUS    RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn              1/1     Running   0          10m
+pod/spring-engineer-app-6f96d5f756-zdkfn   1/1     Running   0          99s
+
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP    10d
+service/postgres-service          ClusterIP   10.107.53.14    <none>        5432/TCP   4m4s
+service/spring-engineer-service   ClusterIP   10.99.188.136   <none>        8077/TCP   93s
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres              1/1     1            1           10m
+deployment.apps/spring-engineer-app   1/1     1            1           99s
+
+NAME                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6              1         1         1       10m
+replicaset.apps/spring-engineer-app-6f96d5f756   1         1         1       99s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ cd ..
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 920 bytes | 24.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 60aa47b..80e39d0
+Fast-forward
+ spring-app/spring-app-route.yml | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+ create mode 100644 spring-app/spring-app-route.yml
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cd spring-app/
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ kubectl create -f ./spring-app-route.yml
+error: error parsing ./spring-app-route.yml: error converting YAML to JSON: yaml: line 3: mapping values are not allowed in this context
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git/spring-app (master)
+$ cd ..
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 904 bytes | 23.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 80e39d0..aaefcef
+Fast-forward
+ spring-app/spring-app-route.yml | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl create -f ./spring-app/spring-app-route.yml
+error: unable to recognize "./spring-app/spring-app-route.yml": no matches for kind "Route" in version "route.openshift.io/v1"
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 840 bytes | 21.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating aaefcef..688bf7e
+Fast-forward
+ spring-app/spring-app-ingress.yml | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 spring-app/spring-app-ingress.yml
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl create -f ./spring-app/spring-app-ingress.yml
+ingress.networking.k8s.io/spring-app-ingress created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get all
+NAME                                       READY   STATUS    RESTARTS   AGE
+pod/postgres-598c45f7c6-kpjhn              1/1     Running   0          39m
+pod/spring-engineer-app-6f96d5f756-zdkfn   1/1     Running   0          30m
+
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP    10d
+service/postgres-service          ClusterIP   10.107.53.14    <none>        5432/TCP   32m
+service/spring-engineer-service   ClusterIP   10.99.188.136   <none>        8077/TCP   30m
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres              1/1     1            1           39m
+deployment.apps/spring-engineer-app   1/1     1            1           30m
+
+NAME                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-598c45f7c6              1         1         1       39m
+replicaset.apps/spring-engineer-app-6f96d5f756   1         1         1       30m
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS   ADDRESS   PORTS   AGE
+spring-app-ingress   <none>   *                 80      26s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS   ADDRESS   PORTS   AGE
+spring-app-ingress   <none>   *                 80      49s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 866 bytes | 15.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 688bf7e..58ab11b
+Fast-forward
+ spring-app/spring-app-ingress.yml | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl delete ingress/spring-app-ingress
+ingress.networking.k8s.io "spring-app-ingress" deleted
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl create -f ./spring-app/spring-app-ingress.yml
+error: error validating "./spring-app/spring-app-ingress.yml": error validating data: ValidationError(Ingress.spec.rules): invalid type for io.k8s.api.networking.v1.IngressSpec.rules: got "map", expected "array"; if you choose to ignore these errors, turn validation off with --validate=false
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 740 bytes | 19.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 58ab11b..74937c1
+Fast-forward
+ spring-app/spring-app-ingress.yml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl create -f ./spring-app/spring-app-ingress.yml
+ingress.networking.k8s.io/spring-app-ingress created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS   ADDRESS   PORTS   AGE
+spring-app-ingress   <none>   *                 80      6s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ git pull https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api.git
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 763 bytes | 18.00 KiB/s, done.
+From https://github.com/Sirisha-Uppala/spring-boot-postgres-rest-api
+ * branch            HEAD       -> FETCH_HEAD
+Updating 74937c1..911a339
+Fast-forward
+ spring-app/spring-app-ingress.yml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl delete ingress/spring-app-ingress
+ingress.networking.k8s.io "spring-app-ingress" deleted
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl create -f ./spring-app/spring-app-ingress.yml
+ingress.networking.k8s.io/spring-app-ingress created
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS                   ADDRESS   PORTS   AGE
+spring-app-ingress   <none>   spring-spp-service.io             80      6s
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get routes
+error: the server doesn't have a resource type "routes"
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get route
+error: the server doesn't have a resource type "route"
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get svc
+NAME                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+kubernetes                ClusterIP   10.96.0.1       <none>        443/TCP    10d
+postgres-service          ClusterIP   10.107.53.14    <none>        5432/TCP   69m
+spring-engineer-service   ClusterIP   10.99.188.136   <none>        8077/TCP   66m
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS                   ADDRESS   PORTS   AGE
+spring-app-ingress   <none>   spring-spp-service.io             80      10m
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl describe ingress spring-app-ingress
+Name:             spring-app-ingress
+Namespace:        default
+Address:
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                   Path  Backends
+  ----                   ----  --------
+  spring-spp-service.io
+                         /engineer   spring-app-service:8077 (<error: endpoints "spring-app-service" not found>)
+Annotations:             <none>
+Events:                  <none>
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl edit ingress spring-app-ingress
+ingress.networking.k8s.io/spring-app-ingress edited
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl describe ingress spring-app-ingress
+Name:             spring-app-ingress
+Namespace:        default
+Address:
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                   Path  Backends
+  ----                   ----  --------
+  spring-app-service.io
+                         /engineer   spring-engineer-service:8077 (172.17.0.6:8077)
+Annotations:             <none>
+Events:                  <none>
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ minikube addons enable ingress
+* After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+! Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 2.7324579s
+* Restarting the docker service may improve performance.
+  - Using image k8s.gcr.io/ingress-nginx/controller:v0.44.0
+  - Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+  - Using image docker.io/jettech/kube-webhook-certgen:v1.5.1
+* Verifying ingress addon...
+* The 'ingress' addon is enabled
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl describe ingress spring-app-ingress
+Name:             spring-app-ingress
+Namespace:        default
+Address:          192.168.49.2
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                   Path  Backends
+  ----                   ----  --------
+  spring-app-service.io
+                         /engineer   spring-engineer-service:8077 (172.17.0.6:8077)
+Annotations:             <none>
+Events:
+  Type    Reason  Age                 From                      Message
+  ----    ------  ----                ----                      -------
+  Normal  Sync    56s (x2 over 116s)  nginx-ingress-controller  Scheduled for sync
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ kubectl get ingress
+NAME                 CLASS    HOSTS                   ADDRESS        PORTS   AGE
+spring-app-ingress   <none>   spring-app-service.io   192.168.49.2   80      16m
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ cat /etc/hosts
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#       127.0.0.1       localhost
+#       ::1             localhost
+# Added by Docker Desktop
+192.168.0.111 host.docker.internal
+192.168.0.111 gateway.docker.internal
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ vi /etc/hosts
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ curl spring-app-service.io
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: spring-app-service.io
+
+GMX+C-T8VK897@DESKTOP-9I23AF3 MINGW64 /d/git (master)
+$ minikube service spring-engineer-service --url
+* service default/spring-engineer-service has no node port
+* Starting tunnel for service spring-engineer-service.
+|-----------|-------------------------|-------------|------------------------|
+| NAMESPACE |          NAME           | TARGET PORT |          URL           |
+|-----------|-------------------------|-------------|------------------------|
+| default   | spring-engineer-service |             | http://127.0.0.1:59666 |
+|-----------|-------------------------|-------------|------------------------|
+http://127.0.0.1:59666
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.

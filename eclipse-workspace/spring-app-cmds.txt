@@ -1,0 +1,14 @@
+1  cd /work/java/scripts/
+    2  ls
+//g' entrypoint.sh
+    4  ./entrypoint.sh
+    5  vi /work/java/test1/src/main/resources/application.properties
+    6  mvn clean package spring-boot:repackage -DskipTests
+    7  pwd
+    8  cd ../test1/
+    9  ls
+   10  mvn clean package spring-boot:repackage -DskipTests
+   11  java -jar target/test-0.0.1-SNAPSHOT.jar
+   12  history
+   
+ 
