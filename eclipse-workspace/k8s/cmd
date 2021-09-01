@@ -1,0 +1,621 @@
+
+C:\Users\C-T8VK897\Downloads\demo>cd demo
+
+C:\Users\C-T8VK897\Downloads\demo\demo>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo\demo
+
+25-05-2021  00:01    <DIR>          .
+25-05-2021  00:01    <DIR>          ..
+25-05-2021  00:01             1,267 .classpath
+24-05-2021  23:57               395 .gitignore
+24-05-2021  23:57    <DIR>          .mvn
+25-05-2021  00:01               709 .project
+25-05-2021  00:01    <DIR>          .settings
+24-05-2021  23:57             1,129 HELP.md
+24-05-2021  23:57            10,070 mvnw
+24-05-2021  23:57             6,608 mvnw.cmd
+24-05-2021  23:57             1,636 pom.xml
+24-05-2021  23:57    <DIR>          src
+25-05-2021  00:00    <DIR>          target
+               7 File(s)         21,814 bytes
+               6 Dir(s)  40,787,619,840 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo\demo>cd ..
+
+C:\Users\C-T8VK897\Downloads\demo>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo
+
+25-05-2021  13:28    <DIR>          .
+25-05-2021  13:28    <DIR>          ..
+25-05-2021  00:01    <DIR>          demo
+25-05-2021  00:35               114 Dockerfile.txt
+25-05-2021  00:35               111 entrypoint.sh.txt
+25-05-2021  23:26    <DIR>          k8s
+               2 File(s)            225 bytes
+               4 Dir(s)  40,791,158,784 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo>cd k8s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo\k8s
+
+25-05-2021  23:26    <DIR>          .
+25-05-2021  23:26    <DIR>          ..
+25-05-2021  23:26               143 cm.yml
+25-05-2021  23:25               913 deployment.yml
+25-05-2021  14:21               272 pv.yml
+25-05-2021  14:17               300 pvc.yml
+25-05-2021  23:25               166 secret.yml
+25-05-2021  23:18               151 service.yml
+               6 File(s)          1,945 bytes
+               2 Dir(s)  40,791,158,784 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pods
+Unable to connect to the server: dial tcp 127.0.0.1:58228: connectex: No connection could be made because the target machine actively refused it.
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>minikube start
+* minikube v1.20.0 on Microsoft Windows 10 Enterprise 10.0.19042 Build 19042
+* Using the docker driver based on existing profile
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* Restarting existing docker container for "minikube" ...
+* Preparing Kubernetes v1.20.2 on Docker 20.10.6 ...
+* Verifying Kubernetes components...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Enabled addons: storage-provisioner, default-storageclass
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pods
+No resources found in default namespace.
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get nodes
+NAME       STATUS   ROLES                  AGE   VERSION
+minikube   Ready    control-plane,master   33h   v1.20.2
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./secret.yml
+error: unable to recognize "./secret.yml": no matches for kind "Secret" in version "apps/v1"
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./secret.yml
+Error from server (BadRequest): error when creating "./secret.yml": Secret in version "v1" cannot be handled as a Secret: v1.Secret.Data: decode base64: illegal base64 data at input byte 4, error found in #10 byte of ...|":"dbpass","postgres|..., bigger context ...|piVersion":"v1","data":{"postgres-passwd":"dbpass","postgres-user":"dbuser"},"kind":"Secret","metada|...
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./secret.yml
+secret/postgres-secret created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get secrets
+NAME                  TYPE                                  DATA   AGE
+default-token-k879f   kubernetes.io/service-account-token   3      33h
+postgres-secret       Opaque                                2      6s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./cm.yml
+configmap/postgres-cm created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pv.yml
+persistentvolume/postgres-vol created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pv
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
+postgres-vol   1Gi        RWX            Retain           Available           local                   6s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo\k8s
+
+25-05-2021  23:26    <DIR>          .
+25-05-2021  23:26    <DIR>          ..
+25-05-2021  23:26               143 cm.yml
+25-05-2021  23:25               913 deployment.yml
+25-05-2021  14:21               272 pv.yml
+25-05-2021  14:17               300 pvc.yml
+25-05-2021  23:32               165 secret.yml
+25-05-2021  23:18               151 service.yml
+               6 File(s)          1,944 bytes
+               2 Dir(s)  40,779,857,920 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pvc.yml
+Error from server (NotFound): error when creating "./pvc.yml": namespaces "{{ meta.namespace }}" not found
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pvc.yml
+persistentvolumeclaim/postgres-vol-pvc created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+postgres-vol-pvc   Pending                                      local-storage   5s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+postgres-vol-pvc   Pending                                      local-storage   9s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+postgres-vol-pvc   Pending                                      local-storage   11s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+postgres-vol-pvc   Pending                                      local-storage   13s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+postgres-vol-pvc   Pending                                      local-storage   65s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>minikube dashboard
+* Enabling dashboard ...
+  - Using image kubernetesui/dashboard:v2.1.0
+  - Using image kubernetesui/metrics-scraper:v1.0.4
+* Verifying dashboard health ...
+* Launching proxy ...
+* Verifying proxy health ...
+* Opening http://127.0.0.1:60587/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
+^C
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe pvc postgres-vol-pvc
+Name:          postgres-vol-pvc
+Namespace:     default
+StorageClass:  local-storage
+Status:        Pending
+Volume:
+Labels:        app=postgres
+               type=local
+Annotations:   <none>
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:
+Access Modes:
+VolumeMode:    Filesystem
+Mounted By:    <none>
+Events:
+  Type     Reason              Age                  From                         Message
+  ----     ------              ----                 ----                         -------
+  Warning  ProvisioningFailed  8s (x11 over 2m34s)  persistentvolume-controller  storageclass.storage.k8s.io "local-storage" not found
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get sc
+NAME                 PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+standard (default)   k8s.io/minikube-hostpath   Delete          Immediate           false                  33h
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl delete pvc postgres-vol-pvc
+persistentvolumeclaim "postgres-vol-pvc" deleted
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pvc.yml
+persistentvolumeclaim/postgres-vol-pvc created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get pvc
+NAME               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+postgres-vol-pvc   Bound    pvc-023c15a9-febd-4f87-b530-67fb60b998a3   1Gi        RWX            standard       5s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo\k8s
+
+25-05-2021  23:26    <DIR>          .
+25-05-2021  23:26    <DIR>          ..
+25-05-2021  23:26               143 cm.yml
+25-05-2021  23:25               913 deployment.yml
+25-05-2021  14:21               272 pv.yml
+25-05-2021  23:36               296 pvc.yml
+25-05-2021  23:32               165 secret.yml
+25-05-2021  23:18               151 service.yml
+               6 File(s)          1,940 bytes
+               2 Dir(s)  40,748,236,800 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+error: error parsing ./deployment.yml: error converting YAML to JSON: yaml: line 14: found character that cannot start any token
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+error: error parsing ./deployment.yml: error converting YAML to JSON: yaml: line 18: did not find expected key
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+error: error validating "./deployment.yml": error validating data: [ValidationError(Deployment.spec.template.metadata): unknown field "apps" in io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta, ValidationError(Deployment.spec.template.metadata): unknown field "spec" in io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta, ValidationError(Deployment.spec): missing required field "selector" in io.k8s.api.apps.v1.DeploymentSpec]; if you choose to ignore these errors, turn validation off with --validate=false
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+error: error validating "./deployment.yml": error validating data: [ValidationError(Deployment.spec.template.spec.containers[0].env[0].valueFrom): unknown field "SecretKeyRef" in io.k8s.api.core.v1.EnvVarSource, ValidationError(Deployment.spec.template.spec.containers[0].env[1].valueFrom): unknown field "SecretKeyRef" in io.k8s.api.core.v1.EnvVarSource, ValidationError(Deployment.spec): missing required field "selector" in io.k8s.api.apps.v1.DeploymentSpec]; if you choose to ignore these errors, turn validation off with --validate=false
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+error: error validating "./deployment.yml": error validating data: ValidationError(Deployment.spec): missing required field "selector" in io.k8s.api.apps.v1.DeploymentSpec; if you choose to ignore these errors, turn validation off with --validate=false
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+deployment.apps/postgres created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+postgres   0/1     1            0           11s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe deployments postgres
+Name:                   postgres
+Namespace:              default
+CreationTimestamp:      Tue, 25 May 2021 23:56:31 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               name=postgres
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  name=postgres
+  Containers:
+   postgres-pod:
+    Image:      postgres
+    Port:       5432/TCP
+    Host Port:  0/TCP
+    Environment Variables from:
+      postgres-cm  ConfigMap  Optional: false
+    Environment:
+      POSTGRES_USER:    <set to the key 'postgres-user' in secret 'postgres-secret'>    Optional: false
+      POSTGRES_PASSWD:  <set to the key 'postgres-passwd' in secret 'postgres-secret'>  Optional: false
+    Mounts:
+      /mnt from postgres-volume (rw)
+  Volumes:
+   postgres-volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  postgres-vol-pvc
+    ReadOnly:   false
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:  <none>
+NewReplicaSet:   postgres-74db9dcf6 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  28s   deployment-controller  Scaled up replica set postgres-74db9dcf6 to 1
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+postgres   0/1     1            0           42s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>minikube dashboard --url
+* Verifying dashboard health ...
+* Launching proxy ...
+* Verifying proxy health ...
+http://127.0.0.1:65367/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+^C
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe deployments postgres
+Name:                   postgres
+Namespace:              default
+CreationTimestamp:      Tue, 25 May 2021 23:56:31 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               name=postgres
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  name=postgres
+  Containers:
+   postgres-pod:
+    Image:      postgres
+    Port:       5432/TCP
+    Host Port:  0/TCP
+    Environment Variables from:
+      postgres-cm  ConfigMap  Optional: false
+    Environment:
+      POSTGRES_USER:    <set to the key 'postgres-user' in secret 'postgres-secret'>    Optional: false
+      POSTGRES_PASSWD:  <set to the key 'postgres-passwd' in secret 'postgres-secret'>  Optional: false
+    Mounts:
+      /mnt from postgres-volume (rw)
+  Volumes:
+   postgres-volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  postgres-vol-pvc
+    ReadOnly:   false
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    True    ReplicaSetUpdated
+OldReplicaSets:  <none>
+NewReplicaSet:   postgres-74db9dcf6 (1/1 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  5m47s  deployment-controller  Scaled up replica set postgres-74db9dcf6 to 1
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+postgres   0/1     1            0           5m51s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                           READY   STATUS             RESTARTS   AGE
+pod/postgres-74db9dcf6-v8s2g   0/1     CrashLoopBackOff   5          6m2s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   34h
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   0/1     1            0           6m2s
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-74db9dcf6   1         1         0       6m2s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl delete deployment postgres
+deployment.apps "postgres" deleted
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                           READY   STATUS        RESTARTS   AGE
+pod/postgres-74db9dcf6-v8s2g   0/1     Terminating   5          6m27s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   34h
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f service.yml
+service/postgres-service created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    34h
+service/postgres-service   ClusterIP   10.108.80.82   <none>        5432/TCP   3s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./deployment.yml
+deployment.apps/postgres created
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                           READY   STATUS   RESTARTS   AGE
+pod/postgres-74db9dcf6-jq2rb   0/1     Error    0          8s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    34h
+service/postgres-service   ClusterIP   10.108.80.82   <none>        5432/TCP   35s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   0/1     1            0           8s
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-74db9dcf6   1         1         0       8s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>minikube dashboard --url
+* Verifying dashboard health ...
+* Launching proxy ...
+* Verifying proxy health ...
+http://127.0.0.1:55352/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+^C
+C:\Users\C-T8VK897\Downloads\demo\k8s>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5A09-DC24
+
+ Directory of C:\Users\C-T8VK897\Downloads\demo\k8s
+
+25-05-2021  23:26    <DIR>          .
+25-05-2021  23:26    <DIR>          ..
+25-05-2021  23:26               143 cm.yml
+25-05-2021  23:56             1,090 deployment.yml
+26-05-2021  00:07               274 pv.yml
+26-05-2021  00:06               298 pvc.yml
+25-05-2021  23:32               165 secret.yml
+25-05-2021  23:18               151 service.yml
+               6 File(s)          2,121 bytes
+               2 Dir(s)  40,331,137,024 bytes free
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl apply -f ./pv.yml
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+The request is invalid: patch: Invalid value: "map[metadata:map[annotations:map[kubectl.kubernetes.io/last-applied-configuration:{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolume\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"postgres\",\"type\":\"local\"},\"name\":\"postgres-vol\"},\"spec\":{\"accessModes\":[\"ReadWriteMany\"],\"capacity\":{\"storage\":\"500MB\"},\"hostPath\":{\"path\":\"/mnt\"},\"storageClassName\":\"local\"}}\n]] spec:map[capacity:map[storage:500MB]]]": quantities must match the regular expression '^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$'
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl apply -f ./pv.yml
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+The request is invalid: patch: Invalid value: "map[metadata:map[annotations:map[kubectl.kubernetes.io/last-applied-configuration:{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolume\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"postgres\",\"type\":\"local\"},\"name\":\"postgres-vol\"},\"spec\":{\"accessModes\":[\"ReadWriteMany\"],\"capacity\":{\"storage\":\"1GB\"},\"hostPath\":{\"path\":\"/mnt\"},\"storageClassName\":\"local\"}}\n]] spec:map[capacity:map[storage:1GB]]]": quantities must match the regular expression '^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$'
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pv.yml
+Error from server (BadRequest): error when creating "./pv.yml": PersistentVolume in version "v1" cannot be handled as a PersistentVolume: v1.PersistentVolume.Spec: v1.PersistentVolumeSpec.PersistentVolumeSource: HostPath: Capacity: unmarshalerDecoder: quantities must match the regular expression '^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$', error found in #10 byte of ...|age":"1GB"},"hostPat|..., bigger context ...|des":["ReadWriteMany"],"capacity":{"storage":"1GB"},"hostPath":{"path":"/mnt"},"storageClassName":"l|...
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl create -f ./pv.yml
+Error from server (AlreadyExists): error when creating "./pv.yml": persistentvolumes "postgres-vol" already exists
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                           READY   STATUS             RESTARTS   AGE
+pod/postgres-74db9dcf6-jq2rb   0/1     CrashLoopBackOff   5          6m8s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    34h
+service/postgres-service   ClusterIP   10.108.80.82   <none>        5432/TCP   6m35s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   0/1     1            0           6m8s
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-74db9dcf6   1         1         0       6m8s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe pod/postgres-74db9dcf6-jq2rb
+Name:         postgres-74db9dcf6-jq2rb
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Wed, 26 May 2021 00:03:43 +0530
+Labels:       name=postgres
+              pod-template-hash=74db9dcf6
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.5
+IPs:
+  IP:           172.17.0.5
+Controlled By:  ReplicaSet/postgres-74db9dcf6
+Containers:
+  postgres-pod:
+    Container ID:   docker://abd4e80002621a1d2518e595e273a6ed4180caacaf51130ae5e823d1dc05fe18
+    Image:          postgres
+    Image ID:       docker-pullable://postgres@sha256:117c3ea384ce21421541515edfb11f2997b2c853d4fdd58a455b77664c1adc20
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Wed, 26 May 2021 00:10:08 +0530
+      Finished:     Wed, 26 May 2021 00:10:08 +0530
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Wed, 26 May 2021 00:07:13 +0530
+      Finished:     Wed, 26 May 2021 00:07:13 +0530
+    Ready:          False
+    Restart Count:  6
+    Environment Variables from:
+      postgres-cm  ConfigMap  Optional: false
+    Environment:
+      POSTGRES_USER:    <set to the key 'postgres-user' in secret 'postgres-secret'>    Optional: false
+      POSTGRES_PASSWD:  <set to the key 'postgres-passwd' in secret 'postgres-secret'>  Optional: false
+    Mounts:
+      /mnt from postgres-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-k879f (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Volumes:
+  postgres-volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  postgres-vol-pvc
+    ReadOnly:   false
+  default-token-k879f:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-k879f
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  6m29s                  default-scheduler  Successfully assigned default/postgres-74db9dcf6-jq2rb to minikube
+  Normal   Pulled     6m26s                  kubelet            Successfully pulled image "postgres" in 3.9788011s
+  Normal   Pulled     6m21s                  kubelet            Successfully pulled image "postgres" in 3.8430397s
+  Normal   Pulled     6m2s                   kubelet            Successfully pulled image "postgres" in 3.8558429s
+  Normal   Pulling    5m32s (x4 over 6m30s)  kubelet            Pulling image "postgres"
+  Normal   Created    5m28s (x4 over 6m25s)  kubelet            Created container postgres-pod
+  Normal   Started    5m28s (x4 over 6m25s)  kubelet            Started container postgres-pod
+  Normal   Pulled     5m28s                  kubelet            Successfully pulled image "postgres" in 3.797473s
+  Warning  BackOff    85s (x25 over 6m21s)   kubelet            Back-off restarting failed container
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl apply -f ./deployment.yml
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+deployment.apps/postgres configured
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl get all
+NAME                           READY   STATUS    RESTARTS   AGE
+pod/postgres-8b54498c9-74txv   1/1     Running   0          14s
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP    34h
+service/postgres-service   ClusterIP   10.108.80.82   <none>        5432/TCP   9m4s
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres   1/1     1            1           8m37s
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-74db9dcf6   0         0         0       8m37s
+replicaset.apps/postgres-8b54498c9   1         1         1       14s
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe pod/postgres-74db9dcf6-jq2rb
+Error from server (NotFound): pods "postgres-74db9dcf6-jq2rb" not found
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl describe pod/postgres-8b54498c9-74txv
+Name:         postgres-8b54498c9-74txv
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Wed, 26 May 2021 00:12:06 +0530
+Labels:       name=postgres
+              pod-template-hash=8b54498c9
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.6
+IPs:
+  IP:           172.17.0.6
+Controlled By:  ReplicaSet/postgres-8b54498c9
+Containers:
+  postgres-pod:
+    Container ID:   docker://9cc13fe8bb4f2d93df6e3981e94a4f10e71e6812689ca92668ecfd8f32a2ed7d
+    Image:          postgres
+    Image ID:       docker-pullable://postgres@sha256:117c3ea384ce21421541515edfb11f2997b2c853d4fdd58a455b77664c1adc20
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 26 May 2021 00:12:11 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment Variables from:
+      postgres-cm  ConfigMap  Optional: false
+    Environment:
+      POSTGRES_USER:      <set to the key 'postgres-user' in secret 'postgres-secret'>    Optional: false
+      POSTGRES_PASSWORD:  <set to the key 'postgres-passwd' in secret 'postgres-secret'>  Optional: false
+      POSTGRES_PASSWD:    <set to the key 'postgres-passwd' in secret 'postgres-secret'>  Optional: false
+    Mounts:
+      /mnt from postgres-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-k879f (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  postgres-volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  postgres-vol-pvc
+    ReadOnly:   false
+  default-token-k879f:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-k879f
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  42s   default-scheduler  Successfully assigned default/postgres-8b54498c9-74txv to minikube
+  Normal  Pulling    42s   kubelet            Pulling image "postgres"
+  Normal  Pulled     38s   kubelet            Successfully pulled image "postgres" in 4.5440177s
+  Normal  Created    38s   kubelet            Created container postgres-pod
+  Normal  Started    38s   kubelet            Started container postgres-pod
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl exec --stdin --tty shell-demo -- /bin/bashkubectl exec --stdin --tty shell-demo -- /bin/bash
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl exec --stdin --tty shell-demo -- /bin/bash
+Error from server (NotFound): pods "shell-demo" not found
+
+C:\Users\C-T8VK897\Downloads\demo\k8s>kubectl exec --stdin --tty pod/postgres-8b54498c9-74txv -- /bin/bash
+root@postgres-8b54498c9-74txv:/# psql -d database -u dbuser
+/usr/lib/postgresql/13/bin/psql: invalid option -- 'u'
+Try "psql --help" for more information.
+root@postgres-8b54498c9-74txv:/# psql -d database -U dbuser
+psql: error: FATAL:  database "database" does not exist
+root@postgres-8b54498c9-74txv:/# \l
+bash: l: command not found
+root@postgres-8b54498c9-74txv:/# \dt
+bash: dt: command not found
+root@postgres-8b54498c9-74txv:/# CREATE DATABASE db
+bash: CREATE: command not found
+root@postgres-8b54498c9-74txv:/# su - dbuser
+su: user dbuser does not exist
+root@postgres-8b54498c9-74txv:/# uname
+Linux
+root@postgres-8b54498c9-74txv:/# uname -i
+unknown
+root@postgres-8b54498c9-74txv:/# whoami
+root
+root@postgres-8b54498c9-74txv:/# ps -ef
+bash: ps: command not found
+root@postgres-8b54498c9-74txv:/# yum
+bash: yum: command not found
+root@postgres-8b54498c9-74txv:/# microdnf
+bash: microdnf: command not found
+root@postgres-8b54498c9-74txv:/# pod/postgres-8b54498c9-74txv
